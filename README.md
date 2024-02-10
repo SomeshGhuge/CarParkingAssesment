@@ -36,17 +36,17 @@ mvn clean install
 
 #### Postman URLs
 ##### baseurl = localhost:8080 (default)
-* create_parking_lot
+* car_parking
 * Create a parking lot with a specified capacity
 ````
 POST 
-{baseurl}/api/create_parking_lot/{capacity}
+{baseurl}/car_parking/parking_lot_size/{capacity}
 ````
 * park
 * Park a car in the parking lot.
 ````
 POST 
-{baseurl}/api/park
+{baseurl}/car_parking/car_park
 
 RequestBody to pass
 {
@@ -58,7 +58,7 @@ RequestBody to pass
 * Remove a car from the parking lot.
 ````
 POST 
-{baseurl}/api/leave
+{baseurl}/car_parking/car_leave
 
 RequestBody to pass
 { 
@@ -74,23 +74,23 @@ RequestBody to pass
 * Get the current status of the parking lot.
 ```
 GET
-{baseurl}/api/status
+{baseurl}/car_parking/parking_status
 ```
 * registration_numbers_for_cars_with_colour
 * Get registration numbers of cars with a specified color.
 ````
 GET 
-{baseurl}/api/registration_numbers_for_cars_with_colour?color=White
+{baseurl}/car_parking/find_registration_number_from_color?color=White
 ````
 * slot_number_for_registration_number
 * Get the slot number of a car with a specified registration number.
 ````
 GET 
-{baseurl}/api/slot_number_for_registration_number?registrationNumber=
+{baseurl}/car_parking/find_slot_number_from_registration_number?registrationNumber=
 ````
 * slot_numbers_for_cars_with_colour
 * Get slot numbers of cars with a specified color.
 ````
 GET 
-{baseurl}/api/slot_numbers_for_cars_with_colour?color=White
+{baseurl}/car_parking/find_slot_number_from_color?color=White
 ````

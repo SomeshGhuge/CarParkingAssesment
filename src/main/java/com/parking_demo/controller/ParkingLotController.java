@@ -7,42 +7,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/parking_slot")
+@RequestMapping("/car_parking")
 public class ParkingLotController {
 
         @Autowired
         private ParkingLotService parkingLotService;
-        @PostMapping("/create_parking_lot/{capacity}")
+        @PostMapping("/parking_lot_size/{capacity}")
         public String createParkingLot(@PathVariable int capacity) {
           return parkingLotService.createParkingLot(capacity);
         }
 
-        @PostMapping("/park")
+        @PostMapping("/car_park")
         public Ticket parkCar(@RequestBody Car car) {
             return parkingLotService.parkCar(car.getRegistrationNumber(),car.getColor());
         }
 
-        @PostMapping("/leave")
+        @PostMapping("/car_leave")
         public String leaveSlot(@RequestBody Ticket ticket) {
             return parkingLotService.leaveSlot(ticket);
         }
 
-        @GetMapping("/status")
+        @GetMapping("/parking_status")
         public String getStatus() {
              return parkingLotService.getStatus();
         }
 
-        @GetMapping("/registration_numbers_for_cars_with_colour")
+        @GetMapping("/find_registration_number_from_color")
         public String getRegistrationNumbersByColor(@RequestParam("color") String color) {
             return parkingLotService.getRegistrationNumbersByColor(color);
         }
 
-        @GetMapping("/slot_number_for_registration_number")
+        @GetMapping("/find_slot_number_from_registration_number")
         public String getSlotNumberByRegistrationNumber(@RequestParam("registrationNumber") String registrationNumber) {
             return parkingLotService.getSlotNumberByRegistrationNumber(registrationNumber);
         }
 
-        @GetMapping("/slot_numbers_for_cars_with_colour")
+        @GetMapping("/find_slot_number_from_color")
         public String getSlotNumbersByColor(@RequestParam("color") String color) {
             return parkingLotService.getSlotNumbersByColor(color);
         }
